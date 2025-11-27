@@ -1,10 +1,20 @@
 #pragma once
+
+#include <string>
+
 using Number = double;
 
-// Возвращает true, если удалось прочитать число
-// и сохранить его в Number.
-bool ReadNumber(Number& result);
-
-// Возвращает true, если работа завершилась штатно 
-// командой q. Если из-за ошибки, возвращает false.
-bool RunCalculatorCycle();
+// Реализуйте здесь класс Calculator.
+class Calculator {
+public:
+    void Set(Number n);
+    Number GetNumber() const;
+    void Add(Number n);
+    void Sub(Number n);
+    void Div(Number n);
+    void Mul(Number n);
+    void Pow(Number n);
+    std::string GetNumberRepr() const;
+private:
+    Number num_second_ = 0;
+};
