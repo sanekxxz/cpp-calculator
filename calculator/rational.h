@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <numeric>
 #include <iostream>
@@ -81,10 +81,18 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const Rational& r);
     friend std::istream& operator>>(std::istream& is, Rational &r);
-    friend Rational operator*(const Rational& r1, const Rational& r2);
-    friend Rational operator/(const Rational& r1, const Rational& r2);
-    friend Rational operator+(const Rational& r1, const Rational& r2);
-    friend Rational operator-(const Rational& r1, const Rational& r2);
+    Rational operator*(const Rational& r2) const{
+        return Rational(numerator_ * r2.numerator_, denominator_ * r2.denominator_);
+    }
+    Rational operator/(const Rational& r2) const {
+        return Rational(numerator_ / r2.numerator_, denominator_ / r2.denominator_);
+    }
+    Rational operator+(const Rational& r2) const {
+        return Rational(numerator_ + r2.numerator_, denominator_ + r2.denominator_);
+    }
+    Rational operator-(const Rational& r2){
+        return Rational(numerator_ - r2.numerator_, denominator_ - r2.denominator_);
+    }
 
 private:
     void Reduction() {
@@ -156,24 +164,4 @@ inline std::istream& operator>>(std::istream& is, Rational &r){
     r.numerator_=num;
     r.denominator_=den;
     return is;
-}
-
-inline Rational operator+(const Rational& r1, const Rational& r2){
-    Rational result = r1;
-    return result += r2;
-}
-
-inline Rational operator-(const Rational& r1, const Rational& r2){
-    Rational result = r1;
-    return result -= r2;
-}
-
-inline Rational operator*(const Rational& r1, const Rational& r2){
-    Rational result = r1;
-    return result *= r2;
-}
-
-inline Rational operator/(const Rational& r1, const Rational& r2){
-    Rational result = r1;
-    return result /= r2;
 }

@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget* parent)
@@ -61,144 +61,196 @@ void MainWindow::SetExtraKey(const std::optional<std::string>& key){
 }
 
 void MainWindow::SetDigitKeyCallback(std::function<void(int key)> cb){
-    if(cb){
-        digit_key_callback_=cb;
-    }
+    digit_key_callback_=cb;
 }
 
 void MainWindow::SetProcessOperationKeyCallback(std::function<void(Operation key)> cb){
-    if(cb){
-        process_operation_key_callback_ = cb;
-    }
+    process_operation_key_callback_ = cb;
 }
 
 void MainWindow::SetProcessControlKeyCallback(std::function<void(ControlKey key)> cb){
-    if(cb){
-        process_control_key_callback_ = cb;
-    }
+    process_control_key_callback_ = cb;
 }
 
 void MainWindow::SetControllerCallback(std::function<void(ControllerType controller)> cb){
-    if(cb){
-        controller_callback_=cb;
-    }
+    controller_callback_=cb;
 }
 
 void MainWindow::OnPbZeroClicked(){
-    digit_key_callback_(0);
+    if(digit_key_callback_){
+        digit_key_callback_(0);
+    }
 }
 
 void MainWindow::OnPbOneClicked(){
-    digit_key_callback_(1);
+    if(digit_key_callback_){
+        digit_key_callback_(1);
+    }
 }
 
 void MainWindow::OnPbTwoClicked(){
-    digit_key_callback_(2);
+    if(digit_key_callback_){
+        digit_key_callback_(2);
+    }
 }
 
 void MainWindow::OnPbThreeClicked(){
-    digit_key_callback_(3);
+    if(digit_key_callback_){
+        digit_key_callback_(3);
+    }
 }
 
 void MainWindow::OnPbFourClicked(){
-    digit_key_callback_(4);
+    if(digit_key_callback_){
+        digit_key_callback_(4);
+    }
 }
 
 void MainWindow::OnPbFiveClicked(){
-    digit_key_callback_(5);
+    if(digit_key_callback_){
+        digit_key_callback_(5);
+    }
 }
 
 void MainWindow::OnPbSixClicked(){
-    digit_key_callback_(6);
+    if(digit_key_callback_){
+        digit_key_callback_(6);
+    }
 }
 
 void MainWindow::OnPbSevenClicked(){
-    digit_key_callback_(7);
+    if(digit_key_callback_){
+        digit_key_callback_(7);
+    }
 }
 
 void MainWindow::OnPbEightClicked(){
-    digit_key_callback_(8);
+    if(digit_key_callback_){
+        digit_key_callback_(8);
+    }
 }
 
 void MainWindow::OnPbNineClicked(){
-    digit_key_callback_(9);
+    if(digit_key_callback_){
+        digit_key_callback_(9);
+    }
 }
 
 void MainWindow::OnTbExtraClicked(){
-    process_control_key_callback_(ControlKey::EXTRA_KEY);
+    if(process_control_key_callback_){
+        process_control_key_callback_(ControlKey::EXTRA_KEY);
+    }
 }
 
 void MainWindow::OnPbBackspaceClicked(){
-    process_control_key_callback_(ControlKey::BACKSPACE);
+    if(process_control_key_callback_){
+        process_control_key_callback_(ControlKey::BACKSPACE);
+    }
 }
 
 void MainWindow::OnPbEqualsClicked(){
-    process_control_key_callback_(ControlKey::EQUALS);
+    if(process_control_key_callback_){
+        process_control_key_callback_(ControlKey::EQUALS);
+    }
 }
 
 void MainWindow::OnPbAdditionClicked(){
-    process_operation_key_callback_(Operation::ADDITION);
+    if(process_control_key_callback_){
+        process_operation_key_callback_(Operation::ADDITION);
+    }
 }
 
 void MainWindow::OnPbMinusClicked(){
-    process_operation_key_callback_(Operation::SUBTRACTION);
+    if(process_control_key_callback_){
+        process_operation_key_callback_(Operation::SUBTRACTION);
+    }
 }
 
 void MainWindow::OnPbMultiplicationClicked(){
-    process_operation_key_callback_(Operation::MULTIPLICATION);
+    if(process_control_key_callback_){
+        process_operation_key_callback_(Operation::MULTIPLICATION);
+    }
 }
 
 void MainWindow::OnPbDivisionClicked(){
-    process_operation_key_callback_(Operation::DIVISION);
+    if(process_control_key_callback_){
+        process_operation_key_callback_(Operation::DIVISION);
+    }
 }
 
 void MainWindow::OnPbToNegativeClicked(){
-    process_control_key_callback_(ControlKey::PLUS_MINUS);
+    if(process_control_key_callback_){
+        process_control_key_callback_(ControlKey::PLUS_MINUS);
+    }
 }
 
 void MainWindow::OnPbClearClicked(){
-    process_control_key_callback_(ControlKey::CLEAR);
+    if(process_control_key_callback_){
+        process_control_key_callback_(ControlKey::CLEAR);
+    }
 }
 
 void MainWindow::OnPbMemoryClearClicked(){
-    process_control_key_callback_(ControlKey::MEM_CLEAR);
+    if(process_control_key_callback_){
+        process_control_key_callback_(ControlKey::MEM_CLEAR);
+    }
 }
 
 void MainWindow::OnPbMemoryReadClicked(){
-    process_control_key_callback_(ControlKey::MEM_LOAD);
+    if(process_control_key_callback_){
+        process_control_key_callback_(ControlKey::MEM_LOAD);
+    }
 }
 
 void MainWindow::OnPbMemorySaveClicked(){
-    process_control_key_callback_(ControlKey::MEM_SAVE);
+    if(process_control_key_callback_){
+        process_control_key_callback_(ControlKey::MEM_SAVE);
+    }
 }
 
 void MainWindow::OnPbRaiseToDeegreClicked(){
-    process_operation_key_callback_(Operation::POWER);
+    if(process_control_key_callback_){
+        process_operation_key_callback_(Operation::POWER);
+    }
 }
 
 void MainWindow::OnCmbControllerClicked(){
     int index = ui->cmb_controller->currentIndex();
     switch(index){
     case 0:
-        controller_callback_(ControllerType::DOUBLE);
+        if(controller_callback_){
+            controller_callback_(ControllerType::DOUBLE);
+        }
         break;
     case 1:
-        controller_callback_(ControllerType::FLOAT);
+        if(controller_callback_){
+            controller_callback_(ControllerType::FLOAT);
+        }
         break;
     case 2:
-        controller_callback_(ControllerType::UINT8_T);
+        if(controller_callback_){
+            controller_callback_(ControllerType::UINT8_T);
+        }
         break;
     case 3:
-        controller_callback_(ControllerType::INT);
+        if(controller_callback_){
+            controller_callback_(ControllerType::INT);
+        }
         break;
     case 4:
-        controller_callback_(ControllerType::INT64_T);
+        if(controller_callback_){
+            controller_callback_(ControllerType::INT64_T);
+        }
         break;
     case 5:
-        controller_callback_(ControllerType::SIZE_T);
+        if(controller_callback_){
+            controller_callback_(ControllerType::SIZE_T);
+        }
         break;
     case 6:
-        controller_callback_(ControllerType::RATIONAL);
+        if(controller_callback_){
+            controller_callback_(ControllerType::RATIONAL);
+        }
         break;
     }
 }
